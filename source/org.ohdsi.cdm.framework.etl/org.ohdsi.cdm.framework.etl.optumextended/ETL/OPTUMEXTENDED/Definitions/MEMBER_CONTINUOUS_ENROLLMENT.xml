@@ -1,6 +1,6 @@
 ﻿<QueryDefinition>
   <Variables>
-    <Variable name="sesJoin" database="ses">LEFT JOIN {sc}.SES on mce.PATID = SES._PATID</Variable>
+    <Variable name="sesJoin" database="ses">LEFT JOIN {sc}.SES on mce.PATID = SES.PATID</Variable>
     <Variable name="sesJoin" database="dod"></Variable>
 
     <Variable name="raceConceptId" database="ses">CASE SES._D_RACE_CODE WHEN 'W' THEN 8527 WHEN 'A' THEN 8515 WHEN 'U' THEN 0 WHEN 'H' THEN 0 WHEN 'B' THEN 8516 ELSE 0 END as RaceConceptId</Variable>
