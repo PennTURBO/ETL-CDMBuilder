@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-16"?>
+<BuildingSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BuildingState>
+    <CreateDestinationDbStart>2025-02-28T14:28:39.8976871-05:00</CreateDestinationDbStart>
+    <CreateDestinationDbEnd xsi:nil="true" />
+    <CreateChunksStart xsi:nil="true" />
+    <CreateChunksEnd xsi:nil="true" />
+    <CreateLookupStart xsi:nil="true" />
+    <CreateLookupEnd xsi:nil="true" />
+    <BuildingStart xsi:nil="true" />
+    <BuildingEnd xsi:nil="true" />
+    <CopyVocabularyStart xsi:nil="true" />
+    <CopyVocabularyEnd xsi:nil="true" />
+    <CreateIndexesStart xsi:nil="true" />
+    <CreateIndexesEnd xsi:nil="true" />
+    <PostprocessStart xsi:nil="true" />
+    <PostprocessEnd xsi:nil="true" />
+  </BuildingState>
+  <RawSourceConnectionString>Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=optumsource;Uid=postgres;Pwd=postgres;sslmode=optional;UseDeclareFetch=1;sc=public;</RawSourceConnectionString>
+  <RawDestinationConnectionString>Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=optumomop;Uid=postgres;Pwd=postgres;sslmode=optional;UseDeclareFetch=1;sc=public;</RawDestinationConnectionString>
+  <RawVocabularyConnectionString>Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=omopvocab;Uid=postgres;Pwd=postgres;sslmode=optional;UseDeclareFetch=1;sc=public;</RawVocabularyConnectionString>
+  <SourceServer>localhost</SourceServer>
+  <SourceDb>optumsource</SourceDb>
+  <SourceSchema>public</SourceSchema>
+  <SourceUser>postgres</SourceUser>
+  <SourcePswd>postgres</SourcePswd>
+  <CdmServer>localhost</CdmServer>
+  <CdmDb>optumomop</CdmDb>
+  <CdmSchema>public</CdmSchema>
+  <CdmUser>postgres</CdmUser>
+  <CdmPswd>postgres</CdmPswd>
+  <VocabServer>localhost</VocabServer>
+  <VocabDb>omopvocab</VocabDb>
+  <VocabSchema>public</VocabSchema>
+  <VocabUser>postgres</VocabUser>
+  <VocabPswd>postgres</VocabPswd>
+  <CompletedChunkIds />
+  <ChunksCount>0</ChunksCount>
+</BuildingSettings>
