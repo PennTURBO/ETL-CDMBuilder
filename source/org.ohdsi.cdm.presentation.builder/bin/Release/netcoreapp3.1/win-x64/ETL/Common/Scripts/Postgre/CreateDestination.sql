@@ -1,1 +1,0 @@
-SELECT 1/count(*) FROM pg_catalog.pg_database WHERE datname='{0}'

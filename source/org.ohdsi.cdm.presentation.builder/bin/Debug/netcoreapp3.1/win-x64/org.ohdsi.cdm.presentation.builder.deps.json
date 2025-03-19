@@ -1243,7 +1243,7 @@
       "org.ohdsi.cdm.framework.common/1.0.0": {
         "runtime": {
           "org.ohdsi.cdm.framework.common.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1261,7 +1261,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.desktop.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1272,7 +1272,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.cerner.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1280,7 +1280,7 @@
       "org.ohdsi.cdm.framework.etl.common/1.0.0": {
         "runtime": {
           "org.ohdsi.cdm.framework.etl.common.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1291,7 +1291,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.cprd.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1302,7 +1302,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.cprdhes.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1313,7 +1313,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.hcup.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1324,7 +1324,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.healthverity.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1335,7 +1335,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.ibm.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1346,7 +1346,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.jmdc.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1357,7 +1357,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.nhanes.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1368,7 +1368,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.optumextended.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1379,7 +1379,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.optumpanther.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1390,7 +1390,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.premier.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1401,7 +1401,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.seer.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }
@@ -1412,7 +1412,7 @@
         },
         "runtime": {
           "org.ohdsi.cdm.framework.etl.symphonyemr.dll": {
-            "assemblyVersion": "1.0.0",
+            "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
         }

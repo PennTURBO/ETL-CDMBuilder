@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-16"?>
 <BuildingSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <BuildingState>
-    <CreateDestinationDbStart>2025-02-28T14:28:39.8976871-05:00</CreateDestinationDbStart>
+    <CreateDestinationDbStart xsi:nil="true" />
     <CreateDestinationDbEnd xsi:nil="true" />
     <CreateChunksStart xsi:nil="true" />
     <CreateChunksEnd xsi:nil="true" />
@@ -16,24 +16,21 @@
     <PostprocessStart xsi:nil="true" />
     <PostprocessEnd xsi:nil="true" />
   </BuildingState>
-  <RawSourceConnectionString>Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=optumsource;Uid=postgres;Pwd=postgres;sslmode=optional;UseDeclareFetch=1;sc=public;</RawSourceConnectionString>
-  <RawDestinationConnectionString>Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=optumomop;Uid=postgres;Pwd=postgres;sslmode=optional;UseDeclareFetch=1;sc=public;</RawDestinationConnectionString>
-  <RawVocabularyConnectionString>Driver={PostgreSQL UNICODE};Server=localhost;Port=5432;Database=omopvocab;Uid=postgres;Pwd=postgres;sslmode=optional;UseDeclareFetch=1;sc=public;</RawVocabularyConnectionString>
-  <SourceServer>localhost</SourceServer>
+  <SourceServer>hsrdcpostgres1.pmacs.upenn.edu</SourceServer>
   <SourceDb>optumsource</SourceDb>
-  <SourceSchema>public</SourceSchema>
-  <SourceUser>postgres</SourceUser>
-  <SourcePswd>postgres</SourcePswd>
-  <CdmServer>localhost</CdmServer>
+  <SourceSchema>full_filtered</SourceSchema>
+  <SourceUser>th5</SourceUser>
+  <SourcePswd>BananaGram#3</SourcePswd>
+  <CdmServer>hsrdcpostgres1.pmacs.upenn.edu</CdmServer>
   <CdmDb>optumomop</CdmDb>
-  <CdmSchema>public</CdmSchema>
-  <CdmUser>postgres</CdmUser>
-  <CdmPswd>postgres</CdmPswd>
-  <VocabServer>localhost</VocabServer>
+  <CdmSchema>th5_full_data_filtered_full_vocab_mar18</CdmSchema>
+  <CdmUser>th5</CdmUser>
+  <CdmPswd>BananaGram#3</CdmPswd>
+  <VocabServer>hsrdcpostgres1.pmacs.upenn.edu</VocabServer>
   <VocabDb>omopvocab</VocabDb>
   <VocabSchema>public</VocabSchema>
-  <VocabUser>postgres</VocabUser>
-  <VocabPswd>postgres</VocabPswd>
+  <VocabUser>th5</VocabUser>
+  <VocabPswd>BananaGram#3</VocabPswd>
   <CompletedChunkIds />
   <ChunksCount>0</ChunksCount>
 </BuildingSettings>

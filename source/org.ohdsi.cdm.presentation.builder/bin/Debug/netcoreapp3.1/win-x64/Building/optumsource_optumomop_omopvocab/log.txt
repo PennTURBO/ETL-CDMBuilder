@@ -1,26 +1,6 @@
-2/28/2025 2:28:39 PM| Creating destination db...
-2/28/2025 2:28:39 PM| BuilderController.PerformAction()
-2/28/2025 2:28:39 PM| --Starting act: Void <CreateDestination>b__9_0()
-2/28/2025 2:28:39 PM| Exception Found:
-Type: System.Data.Odbc.OdbcException
-Message: ERROR [08001] connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "optumomop" does not exist
-
-Source: 
-Stacktrace:    at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
-   at System.Data.Odbc.OdbcConnectionHandle..ctor(OdbcConnection connection, OdbcConnectionString constr, OdbcEnvironmentHandle environmentHandle)
-   at System.Data.Odbc.OdbcConnectionOpen..ctor(OdbcConnection outerConnection, OdbcConnectionString connectionOptions)
-   at System.Data.Odbc.OdbcConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
-   at System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
-   at System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
-   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
-   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
-   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
-   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
-   at System.Data.Odbc.OdbcConnection.Open()
-   at org.ohdsi.cdm.framework.desktop.Helpers.SqlConnectionHelper.OpenOdbcConnection(String connectionString) in C:\Users\user\ETL-CDMBuilder-new\source\org.ohdsi.cdm.framework.desktop\Helpers\SqlConnectionHelper.cs:line 25
-   at org.ohdsi.cdm.framework.desktop.DbLayer.DbDestination.CreateDatabase(String query) in C:\Users\user\ETL-CDMBuilder-new\source\org.ohdsi.cdm.framework.desktop\DbLayer\DbDestination.cs:line 39
-   at org.ohdsi.cdm.presentation.builder.Controllers.BuilderController.<>c.<CreateDestination>b__9_0() in C:\Users\user\ETL-CDMBuilder-new\source\org.ohdsi.cdm.presentation.builder\Controllers\BuilderController.cs:line 81
-   at org.ohdsi.cdm.presentation.builder.Controllers.BuilderController.PerformAction(Action act) in C:\Users\user\ETL-CDMBuilder-new\source\org.ohdsi.cdm.presentation.builder\Controllers\BuilderController.cs:line 60
-2/28/2025 2:28:39 PM| Destination db created.
-2/28/2025 2:28:39 PM| Starting CreateLookup...
-2/28/2025 2:28:39 PM| BuilderController.PerformAction()
+3/18/2025 8:28:09 PM| Creating destination db...
+3/18/2025 8:28:10 PM| Destination db created.
+3/18/2025 8:28:10 PM| Starting CreateLookup...
+3/18/2025 8:28:11 PM| Specialty - Loading into RAM...
+3/18/2025 8:28:11 PM| Specialty - Query: \\tsclient\C\Users\th5\AppData\Roaming\MobaXterm\home\ETL-CDMBuilder-vdi-builds\source\org.ohdsi.cdm.presentation.builder\bin\Debug\netcoreapp3.1\win-x64\ETL\OPTUMEXTENDED\Lookups\Specialty.sql
+3/18/2025 8:29:56 PM| DONE - 105816 ms | KeysCount=3844
