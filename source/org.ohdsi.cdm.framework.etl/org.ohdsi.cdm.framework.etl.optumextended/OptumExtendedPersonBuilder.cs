@@ -6,6 +6,7 @@ using org.ohdsi.cdm.framework.common.PregnancyAlgorithm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace org.ohdsi.cdm.framework.etl.optumextended
 {
@@ -105,20 +106,28 @@ namespace org.ohdsi.cdm.framework.etl.optumextended
                 var conceptId = result.Any() ? result[0].ConceptId ?? 0 : 0;
                 visitOccurrence.ConceptId = conceptId;
 
-                if (conceptId == 9201)
+                try
                 {
-                    ipVisitsRaw.Add(visitOccurrence);
+                    if (conceptId == 9201)
+                    {
+                        ipVisitsRaw.Add(visitOccurrence);
+                    }
+                    else if (conceptId == 9203)
+                    {
+                        erVisitsRaw.Add(visitOccurrence);
+                    }
+                    else
+                    {
+                        othersRaw.Add(visitOccurrence);
+                    }
                 }
-                else if (conceptId == 9203)
+
+                catch (Exception e)
                 {
-                    erVisitsRaw.Add(visitOccurrence);
-                }
-                else
-                {
-                    othersRaw.Add(visitOccurrence);
+                    LogError(e, visitOccurrence, "BuildVisitOccurrences() visitOccurrence");
+                    throw;
                 }
             }
-
 
             var ipVisits = CollapseVisits(ipVisitsRaw);
 
@@ -148,12 +157,28 @@ namespace org.ohdsi.cdm.framework.etl.optumextended
                 else
                 {
                     visit = erVisit;
-                    erVisits.Add(visit);
+                    try
+                    {
+                        erVisits.Add(visit);
+                    }
+                    catch (Exception e)
+                    {
+                        LogError(e, visit, "BuildVisitOccurrences(): erVisit");
+                        throw;
+                    }
                 }
 
                 foreach (var visitOccurrence in erGroup)
                 {
-                    AddRawVisitOccurrence(visitOccurrence, visit);
+                    try
+                    {
+                        AddRawVisitOccurrence(visitOccurrence, visit);
+                    }
+                    catch (Exception e)
+                    {
+                        LogError(e, visitOccurrence, "BuildVisitOccurrences(): erVisit 2");
+                        throw;
+                    }
                 }
             }
 
@@ -165,17 +190,33 @@ namespace org.ohdsi.cdm.framework.etl.optumextended
                 //For all other VISIT_DETAIL records, first look to see if they occur at any point within a previously defined inpatient visit.
                 if (ip != null)
                 {
-                    AddRawVisitOccurrence(otherVisit, ip);
+                    try
+                    {
+                        AddRawVisitOccurrence(otherVisit, ip);
+                    }
+                    catch (Exception e)
+                    {
+                        LogError(e, otherVisit, "BuildVisitOccurrences(): other visit");
+                        throw;
+                    }
                 }
                 else
                 {
-                    if (otherVisit.ConceptId == 42898160)
+                    try
                     {
-                        nonHospitalVisitsRaw.Add(otherVisit);
+                        if (otherVisit.ConceptId == 42898160)
+                        {
+                            nonHospitalVisitsRaw.Add(otherVisit);
+                        }
+                        else
+                        {
+                            remainingRaw.Add(otherVisit);
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
-                        remainingRaw.Add(otherVisit);
+                        LogError(e, otherVisit, "BuildVisitOccurrences(): other visit 2");
+                        throw;
                     }
                 }
             }
@@ -189,11 +230,27 @@ namespace org.ohdsi.cdm.framework.etl.optumextended
                         v => remainingVisit.StartDate.Between(v.StartDate, v.EndDate.Value));
                 if (nonHospital != null)
                 {
-                    AddRawVisitOccurrence(remainingVisit, nonHospital);
+                    try
+                    {
+                        AddRawVisitOccurrence(remainingVisit, nonHospital);
+                    }
+                    catch (Exception e)
+                    {
+                        LogError(e, remainingVisit, "BuildVisitOccurrences(): other visit");
+                        throw;
+                    }
                 }
                 else
                 {
-                    remaining.Add(remainingVisit);
+                    try
+                    {
+                        remaining.Add(remainingVisit);
+                    }
+                    catch (Exception e)
+                    {
+                        LogError(e, remainingVisit, "BuildVisitOccurrences(): remaining");
+                        throw;
+                    }
                 }
             }
 
@@ -214,7 +271,15 @@ namespace org.ohdsi.cdm.framework.etl.optumextended
 
                         foreach (var vo in byCareSiteId)
                         {
-                            AddRawVisitOccurrence(vo, visit);
+                            try
+                            {
+                                AddRawVisitOccurrence(vo, visit);
+                            }
+                            catch (Exception e)
+                            {
+                                LogError(e, vo, "BuildVisitOccurrences(): all other");
+                                throw;
+                            }
                         }
 
                         yield return visit;
@@ -252,28 +317,69 @@ namespace org.ohdsi.cdm.framework.etl.optumextended
             foreach (var claim in visits.OrderBy(vo => vo.StartDate)
                 .ThenBy(vo => vo.EndDate))
             {
-                if (collaped.Count > 0)
+                try
                 {
-                    var previousClaim = collaped.Last();
-                    if (claim.StartDate <= previousClaim.EndDate.Value.AddDays(1))
+                    if (collaped.Count > 0)
                     {
-                        if (claim.EndDate >= previousClaim.EndDate)
+                        var previousClaim = collaped.Last();
+
+                        if (previousClaim.EndDate.HasValue && previousClaim.EndDate.Value > DateTime.MaxValue.AddDays(-2))
                         {
-                            previousClaim.EndDate = claim.EndDate;
+                            LogDetailedVisitIssue("CollapseVisits(): previousClaim end at max", previousClaim);
                         }
 
-                        AddRawVisitOccurrence(claim, previousClaim);
-                        continue;
-                    }
-                }
+                        if (claim.StartDate <= previousClaim.EndDate.Value.AddDays(1))
+                        {
+                            if (claim.EndDate >= previousClaim.EndDate)
+                            {
+                                previousClaim.EndDate = claim.EndDate;
+                            }
 
-                AddRawVisitOccurrence(claim, claim);
-                collaped.Add(claim);
+                            AddRawVisitOccurrence(claim, previousClaim);
+                            continue;
+                        }
+                    }
+
+                    AddRawVisitOccurrence(claim, claim);
+                    collaped.Add(claim);
+                }
+                catch (Exception e)
+                {
+                    LogError(e, claim, "CollapseVisits() 2");
+                    throw;
+                }
             }
 
             return collaped;
         }
 
+        private void LogError(Exception e, VisitOccurrence visit, string context)
+        {
+            var f = "visit_errors.log";
+            var message = DateTime.Now + " Exception " + context + ": " + e.Message + "\n" +
+                            "VisitOccurrenceId: " + visit.Id + ", " +
+                            "PersonId: " + visit.PersonId + ", " +
+                            "ConceptId: " + visit.ConceptId + ", " +
+                            "StartDate: " + visit.StartDate + ", " +
+                            "EndDate: " + visit.EndDate + ", " +
+                            "CareSiteId: " + visit.CareSiteId + "\n" +
+                            "StackTrace:\n" + e.StackTrace + "\n\n";
+
+            File.AppendAllText(f, message);
+        }
+        private void LogDetailedVisitIssue(string issueDescription, VisitOccurrence visit)
+        {
+            var detailedLogPath = "visit_detailed_errors.log";
+            var message = DateTime.Now + " Issue Detected: " + issueDescription + "\n" +
+                            "VisitOccurrenceId: " + visit.Id + ", " +
+                            "PersonId: " + visit.PersonId + ", " +
+                            "ConceptId: " + visit.ConceptId + ", " +
+                            "StartDate: " + visit.StartDate + ", " +
+                            "EndDate: " + visit.EndDate + ", " +
+                            "CareSiteId: " + visit.CareSiteId + "\n\n";
+
+            File.AppendAllText(detailedLogPath, message);
+        }
 
         public override IEnumerable<VisitDetail> BuildVisitDetails(VisitDetail[] visitDetails,
             VisitOccurrence[] visitOccurrences, ObservationPeriod[] observationPeriods)
